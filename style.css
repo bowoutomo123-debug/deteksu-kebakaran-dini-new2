@@ -1,0 +1,1581 @@
+/* ==================================================
+   RESET
+================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #07111f;
+
+    color: #ffffff;
+
+    min-height: 100vh;
+}
+
+
+/* ==================================================
+   TOPBAR
+================================================== */
+
+.topbar {
+    height: 82px;
+
+    padding: 0 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        rgba(5, 13, 26, 0.96);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+.brand-icon {
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 23px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #f97316
+        );
+
+    box-shadow:
+        0 0 22px rgba(249, 115, 22, 0.35);
+}
+
+
+.brand h1 {
+    font-size: 18px;
+
+    letter-spacing: 1.3px;
+
+    font-weight: 800;
+}
+
+
+.brand p {
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    color: #64748b;
+}
+
+
+.connection {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 9px 14px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.dot {
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+}
+
+
+.dot.online {
+    background: #22c55e;
+
+    box-shadow:
+        0 0 12px #22c55e;
+}
+
+
+.dot.offline {
+    background: #ef4444;
+
+    box-shadow:
+        0 0 12px #ef4444;
+}
+
+
+/* ==================================================
+   MAIN
+================================================== */
+
+.main-container {
+    width: 100%;
+
+    max-width: 1450px;
+
+    margin: auto;
+
+    padding: 28px 35px 60px;
+}
+
+
+/* ==================================================
+   STATUS UTAMA
+================================================== */
+
+.status-section {
+    margin-bottom: 25px;
+}
+
+
+.main-status {
+    min-height: 125px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(12, 32, 53, 0.95),
+            rgba(7, 18, 32, 0.95)
+        );
+
+    border:
+        1px solid rgba(34, 197, 94, 0.35);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25);
+
+    transition:
+        0.3s ease;
+}
+
+
+.main-status.danger {
+    border-color:
+        rgba(239, 68, 68, 0.7);
+
+    box-shadow:
+        0 0 35px rgba(239, 68, 68, 0.16);
+
+    animation:
+        dangerBox 1.4s infinite;
+}
+
+
+@keyframes dangerBox {
+
+    0% {
+        box-shadow:
+            0 0 25px rgba(239, 68, 68, 0.10);
+    }
+
+    50% {
+        box-shadow:
+            0 0 50px rgba(239, 68, 68, 0.25);
+    }
+
+    100% {
+        box-shadow:
+            0 0 25px rgba(239, 68, 68, 0.10);
+    }
+
+}
+
+
+.status-icon {
+    width: 70px;
+
+    height: 70px;
+
+    min-width: 70px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+    color: #22c55e;
+
+    background:
+        rgba(34, 197, 94, 0.10);
+
+    border:
+        2px solid rgba(34, 197, 94, 0.5);
+}
+
+
+.main-status.danger .status-icon {
+    color: #ef4444;
+
+    background:
+        rgba(239, 68, 68, 0.10);
+
+    border-color:
+        rgba(239, 68, 68, 0.6);
+}
+
+
+.status-text span {
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.status-text h2 {
+    margin-top: 5px;
+
+    font-size: 32px;
+
+    color: #22c55e;
+
+    letter-spacing: 1px;
+}
+
+
+.main-status.danger .status-text h2 {
+    color: #ef4444;
+}
+
+
+.status-text p {
+    margin-top: 5px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* ==================================================
+   SECTION HEADER
+================================================== */
+
+.section-header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+
+.section-header span {
+    color: #64748b;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.section-header h2 {
+    margin-top: 5px;
+
+    font-size: 20px;
+}
+
+
+.fire-indicator {
+    padding: 7px 12px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    background:
+        rgba(34, 197, 94, 0.10);
+
+    color: #22c55e;
+
+    border:
+        1px solid rgba(34, 197, 94, 0.25);
+}
+
+
+.fire-indicator.danger {
+    background:
+        rgba(239, 68, 68, 0.12);
+
+    color: #ef4444;
+
+    border-color:
+        rgba(239, 68, 68, 0.35);
+
+    animation:
+        indicatorBlink 0.9s infinite;
+}
+
+
+@keyframes indicatorBlink {
+
+    50% {
+        opacity: 0.45;
+    }
+
+}
+
+
+/* ==================================================
+   FIRE MONITORING
+================================================== */
+
+.fire-monitoring {
+    margin-bottom: 30px;
+}
+
+
+.house-scene {
+    height: 500px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        #0a1627;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        inset 0 0 80px rgba(0, 0, 0, 0.45),
+        0 15px 40px rgba(0, 0, 0, 0.30);
+}
+
+
+/* ==================================================
+   LANGIT
+================================================== */
+
+.sky {
+    position: absolute;
+
+    inset: 0 0 100px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            #07101f 0%,
+            #0d1d34 65%,
+            #182c43 100%
+        );
+}
+
+
+.moon {
+    position: absolute;
+
+    width: 55px;
+
+    height: 55px;
+
+    right: 70px;
+
+    top: 35px;
+
+    border-radius: 50%;
+
+    background:
+        #e8edf5;
+
+    box-shadow:
+        0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+
+.star {
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    opacity: 0.6;
+}
+
+
+.star1 {
+    top: 45px;
+    left: 15%;
+}
+
+.star2 {
+    top: 95px;
+    left: 32%;
+}
+
+.star3 {
+    top: 55px;
+    left: 55%;
+}
+
+.star4 {
+    top: 125px;
+    left: 72%;
+}
+
+
+/* ==================================================
+   TANAH
+================================================== */
+
+.ground {
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    height: 105px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #16251e,
+            #09130f
+        );
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.04);
+}
+
+
+/* ==================================================
+   RUMAH
+================================================== */
+
+.house {
+    position: absolute;
+
+    width: 520px;
+
+    height: 330px;
+
+    left: 50%;
+
+    bottom: 65px;
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* ==================================================
+   DINDING
+================================================== */
+
+.wall {
+    position: absolute;
+
+    width: 430px;
+
+    height: 245px;
+
+    left: 45px;
+
+    bottom: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #b9a58b,
+            #8f795f
+        );
+
+    border:
+        2px solid #65513d;
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ==================================================
+   ATAP
+================================================== */
+
+.roof {
+    position: absolute;
+
+    width: 0;
+
+    height: 0;
+
+    left: 15px;
+
+    bottom: 235px;
+
+    border-left:
+        260px solid transparent;
+
+    border-right:
+        260px solid transparent;
+
+    border-bottom:
+        135px solid #3b2521;
+
+    filter:
+        drop-shadow(0 8px 10px rgba(0, 0, 0, 0.4));
+}
+
+
+.roof::after {
+    content: "";
+
+    position: absolute;
+
+    width: 365px;
+
+    height: 20px;
+
+    left: -182px;
+
+    bottom: -132px;
+
+    background:
+        #291b18;
+
+    transform:
+        rotate(-14deg);
+}
+
+
+/* ==================================================
+   PINTU
+================================================== */
+
+.door {
+    position: absolute;
+
+    width: 82px;
+
+    height: 145px;
+
+    left: 174px;
+
+    bottom: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #503427,
+            #704733,
+            #4b2d22
+        );
+
+    border:
+        3px solid #332018;
+
+    box-shadow:
+        inset 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+
+.door-handle {
+    position: absolute;
+
+    width: 8px;
+
+    height: 8px;
+
+    right: 12px;
+
+    top: 70px;
+
+    border-radius: 50%;
+
+    background:
+        #d9ad55;
+
+    box-shadow:
+        0 0 5px rgba(255, 200, 80, 0.5);
+}
+
+
+/* ==================================================
+   JENDELA
+================================================== */
+
+.window {
+    position: absolute;
+
+    width: 90px;
+
+    height: 85px;
+
+    top: 70px;
+
+    background:
+        #071522;
+
+    border:
+        6px solid #4d3528;
+
+    box-shadow:
+        0 0 15px rgba(0, 0, 0, 0.45);
+}
+
+
+.window-left {
+    left: 35px;
+}
+
+
+.window-right {
+    right: 35px;
+}
+
+
+.window-glass {
+    width: 100%;
+
+    height: 100%;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #173b5d,
+            #091a2d
+        );
+
+    overflow: hidden;
+}
+
+
+.window-glass span:first-child {
+    position: absolute;
+
+    width: 3px;
+
+    height: 100%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        #4d3528;
+}
+
+
+.window-glass span:last-child {
+    position: absolute;
+
+    width: 100%;
+
+    height: 3px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    background:
+        #4d3528;
+}
+
+
+/* ==================================================
+   CEROBONG
+================================================== */
+
+.chimney {
+    position: absolute;
+
+    width: 55px;
+
+    height: 100px;
+
+    right: 85px;
+
+    bottom: 275px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #593e35,
+            #754e43,
+            #4c342d
+        );
+
+    border:
+        2px solid #36251f;
+}
+
+
+/* ==================================================
+   SENSOR
+================================================== */
+
+.sensor {
+    position: absolute;
+
+    z-index: 5;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 5px 8px;
+
+    border-radius: 5px;
+
+    background:
+        rgba(0, 0, 0, 0.65);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    color: #dbeafe;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+
+.sensor-dot {
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 7px #22c55e;
+}
+
+
+.sensor-temp {
+    left: -15px;
+
+    top: 130px;
+}
+
+
+.sensor-smoke {
+    right: -20px;
+
+    top: 175px;
+}
+
+
+.sensor-flame {
+    left: 40px;
+
+    bottom: -18px;
+}
+
+
+/* ==================================================
+   API
+================================================== */
+
+.fire-container {
+    position: absolute;
+
+    z-index: 10;
+
+    width: 70px;
+
+    height: 100px;
+
+    left: 350px;
+
+    bottom: 5px;
+
+    opacity: 0;
+
+    transform:
+        scale(0.5);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+.fire-container.active {
+    opacity: 1;
+
+    transform:
+        scale(1);
+}
+
+
+.fire {
+    position: absolute;
+
+    bottom: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+
+    border-radius:
+        50% 0 50% 50%;
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(255, 80, 0, 0.8)
+        );
+
+    animation:
+        fireMove 0.45s infinite alternate;
+}
+
+
+.fire-small {
+    width: 25px;
+
+    height: 25px;
+
+    bottom: 0;
+
+    background:
+        #fff1a8;
+}
+
+
+.fire-medium {
+    width: 42px;
+
+    height: 42px;
+
+    bottom: 2px;
+
+    background:
+        #ffb000;
+}
+
+
+.fire-large {
+    width: 60px;
+
+    height: 60px;
+
+    bottom: 5px;
+
+    background:
+        #f04420;
+}
+
+
+@keyframes fireMove {
+
+    from {
+        transform:
+            translateX(-50%)
+            rotate(40deg)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            rotate(50deg)
+            scale(1.08);
+    }
+
+}
+
+
+/* ==================================================
+   ASAP
+================================================== */
+
+.smoke-container {
+    position: absolute;
+
+    width: 150px;
+
+    height: 250px;
+
+    left: calc(50% + 95px);
+
+    bottom: 300px;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+
+.smoke {
+    position: absolute;
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(180, 190, 200, 0.55),
+            rgba(90, 100, 110, 0.15) 65%,
+            transparent 72%
+        );
+
+    filter:
+        blur(3px);
+
+    opacity: 0;
+
+    transform:
+        scale(0.4);
+
+}
+
+
+.smoke1 {
+    left: 55px;
+
+    bottom: 0;
+}
+
+
+.smoke2 {
+    left: 30px;
+
+    bottom: 35px;
+}
+
+
+.smoke3 {
+    left: 70px;
+
+    bottom: 70px;
+}
+
+
+.smoke4 {
+    left: 40px;
+
+    bottom: 110px;
+}
+
+
+.smoke5 {
+    left: 80px;
+
+    bottom: 150px;
+}
+
+
+.smoke-container.active .smoke {
+    animation:
+        smokeRise 3.5s infinite;
+}
+
+
+.smoke-container.active .smoke2 {
+    animation-delay:
+        0.6s;
+}
+
+
+.smoke-container.active .smoke3 {
+    animation-delay:
+        1.1s;
+}
+
+
+.smoke-container.active .smoke4 {
+    animation-delay:
+        1.7s;
+}
+
+
+.smoke-container.active .smoke5 {
+    animation-delay:
+        2.3s;
+}
+
+
+@keyframes smokeRise {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            translateX(0)
+            scale(0.35);
+    }
+
+    20% {
+        opacity: 0.65;
+    }
+
+    60% {
+        opacity: 0.45;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-130px)
+            translateX(-25px)
+            scale(1.5);
+    }
+
+}
+
+
+/* ==================================================
+   PESAN DI SCENE
+================================================== */
+
+.scene-message {
+    position: absolute;
+
+    top: 20px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 30;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(22, 163, 74, 0.15);
+
+    border:
+        1px solid rgba(34, 197, 94, 0.4);
+
+    color: #4ade80;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
+}
+
+
+.scene-message.danger {
+    color: #ff6b6b;
+
+    background:
+        rgba(239, 68, 68, 0.15);
+
+    border-color:
+        rgba(239, 68, 68, 0.5);
+
+    animation:
+        sceneDanger 0.9s infinite;
+}
+
+
+@keyframes sceneDanger {
+
+    50% {
+        opacity: 0.45;
+    }
+
+}
+
+
+/* ==================================================
+   SENSOR CARDS
+================================================== */
+
+.sensor-section {
+    margin-bottom: 30px;
+}
+
+
+.sensor-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+
+.sensor-card {
+    min-height: 175px;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    background:
+        #0d1b2d;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    transition:
+        0.25s ease;
+}
+
+
+.sensor-card:hover {
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(255, 255, 255, 0.16);
+}
+
+
+.card-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.sensor-icon {
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    font-size: 18px;
+}
+
+
+.value {
+    margin-top: 17px;
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 6px;
+}
+
+
+.value strong {
+    font-size: 34px;
+
+    color: #f8fafc;
+}
+
+
+.value small {
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.value.text strong {
+    font-size: 18px;
+}
+
+
+.condition {
+    display: inline-block;
+
+    margin-top: 14px;
+
+    padding: 6px 9px;
+
+    border-radius: 5px;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.8px;
+
+    color: #22c55e;
+
+    background:
+        rgba(34, 197, 94, 0.08);
+}
+
+
+.condition.danger {
+    color: #ef4444;
+
+    background:
+        rgba(239, 68, 68, 0.10);
+}
+
+
+/* ==================================================
+   AKTUATOR
+================================================== */
+
+.actuator-section {
+    margin-bottom: 25px;
+}
+
+
+.actuator-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+
+.actuator-card {
+    padding: 18px;
+
+    border-radius: 14px;
+
+    background:
+        #0d1b2d;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+
+.actuator-symbol {
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    font-size: 20px;
+}
+
+
+.actuator-card span {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+.actuator-card strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #22c55e;
+
+    font-size: 15px;
+}
+
+
+.actuator-card strong.on {
+    color: #ef4444;
+}
+
+
+/* ==================================================
+   SYSTEM INFO
+================================================== */
+
+.system-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    padding: 17px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+.system-info div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.system-info span {
+    color: #475569;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.system-info strong {
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width: 1000px) {
+
+    .sensor-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .house-scene {
+        height: 460px;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .topbar {
+        height: auto;
+
+        padding: 15px 18px;
+
+        gap: 15px;
+
+        align-items: flex-start;
+    }
+
+
+    .brand h1 {
+        font-size: 14px;
+    }
+
+
+    .connection {
+        font-size: 8px;
+    }
+
+
+    .main-container {
+        padding:
+            22px 17px 45px;
+    }
+
+
+    .main-status {
+        padding: 20px;
+
+        gap: 15px;
+    }
+
+
+    .status-icon {
+        width: 55px;
+
+        height: 55px;
+
+        min-width: 55px;
+
+        font-size: 23px;
+    }
+
+
+    .status-text h2 {
+        font-size: 25px;
+    }
+
+
+    .house-scene {
+        height: 420px;
+    }
+
+
+    .house {
+        transform:
+            translateX(-50%)
+            scale(0.72);
+
+        transform-origin:
+            bottom center;
+    }
+
+
+    .smoke-container {
+        transform:
+            scale(0.8);
+
+        transform-origin:
+            bottom center;
+    }
+
+
+    .sensor-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .actuator-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .system-info {
+        grid-template-columns:
+            1fr;
+    }
+
+}

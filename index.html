@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Monitoring Deteksi Kebakaran Dini</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MQTT -->
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🔥
+        </div>
+
+        <div>
+            <h1>
+                DETEKSI KEBAKARAN DINI
+            </h1>
+
+            <p>
+                Sistem Monitoring Berbasis IoT
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="connection">
+
+        <span
+            id="connectionDot"
+            class="dot offline">
+        </span>
+
+        <span id="connectionText">
+            MQTT TERPUTUS
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<!-- ==================================================
+     MAIN
+================================================== -->
+
+<main class="main-container">
+
+
+<!-- ==================================================
+     STATUS BESAR
+================================================== -->
+
+<section class="status-section">
+
+    <div
+        id="mainStatus"
+        class="main-status safe">
+
+        <div
+            id="statusIcon"
+            class="status-icon">
+            ✓
+        </div>
+
+
+        <div class="status-text">
+
+            <span>
+                STATUS SISTEM
+            </span>
+
+            <h2 id="systemStatus">
+                AMAN
+            </h2>
+
+            <p id="statusDescription">
+                Tidak ada indikasi kebakaran
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     VISUAL RUMAH
+================================================== -->
+
+<section class="fire-monitoring">
+
+
+    <div class="section-header">
+
+        <div>
+
+            <span>
+                VISUAL MONITORING
+            </span>
+
+            <h2>
+                Kondisi Bangunan
+            </h2>
+
+        </div>
+
+        <div
+            id="fireIndicator"
+            class="fire-indicator safe">
+
+            ● NORMAL
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         AREA RUMAH
+    ================================================== -->
+
+    <div
+        id="houseScene"
+        class="house-scene">
+
+
+        <!-- LANGIT -->
+
+        <div class="sky">
+
+            <div class="moon"></div>
+
+            <div class="star star1"></div>
+            <div class="star star2"></div>
+            <div class="star star3"></div>
+            <div class="star star4"></div>
+
+        </div>
+
+
+
+        <!-- TANAH -->
+
+        <div class="ground"></div>
+
+
+
+        <!-- ASAP -->
+
+        <div
+            id="smokeContainer"
+            class="smoke-container">
+
+            <div class="smoke smoke1"></div>
+            <div class="smoke smoke2"></div>
+            <div class="smoke smoke3"></div>
+            <div class="smoke smoke4"></div>
+            <div class="smoke smoke5"></div>
+
+        </div>
+
+
+
+        <!-- RUMAH -->
+
+        <div class="house">
+
+
+            <!-- ATAP -->
+
+            <div class="roof">
+
+                <div class="roof-line"></div>
+
+            </div>
+
+
+
+            <!-- DINDING -->
+
+            <div class="wall">
+
+
+                <!-- JENDELA KIRI -->
+
+                <div class="window window-left">
+
+                    <div class="window-glass">
+
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PINTU -->
+
+                <div class="door">
+
+                    <div class="door-handle"></div>
+
+                </div>
+
+
+
+                <!-- JENDELA KANAN -->
+
+                <div class="window window-right">
+
+                    <div class="window-glass">
+
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- CEROBONG -->
+
+            <div class="chimney">
+
+            </div>
+
+
+
+            <!-- API -->
+
+            <div
+                id="fireContainer"
+                class="fire-container">
+
+                <div class="fire fire-small"></div>
+
+                <div class="fire fire-medium"></div>
+
+                <div class="fire fire-large"></div>
+
+            </div>
+
+
+
+            <!-- LABEL SENSOR -->
+
+            <div class="sensor sensor-temp">
+
+                <div class="sensor-dot"></div>
+
+                <span>
+                    DHT22
+                </span>
+
+            </div>
+
+
+            <div class="sensor sensor-smoke">
+
+                <div class="sensor-dot"></div>
+
+                <span>
+                    MQ-2
+                </span>
+
+            </div>
+
+
+            <div class="sensor sensor-flame">
+
+                <div class="sensor-dot"></div>
+
+                <span>
+                    FLAME
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- STATUS DI ATAS RUMAH -->
+
+        <div
+            id="sceneMessage"
+            class="scene-message">
+
+            SISTEM NORMAL
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SENSOR
+================================================== -->
+
+<section class="sensor-section">
+
+
+    <div class="section-header">
+
+        <div>
+
+            <span>
+                SENSOR REALTIME
+            </span>
+
+            <h2>
+                Kondisi Lingkungan
+            </h2>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="sensor-grid">
+
+
+        <!-- SUHU -->
+
+        <div class="sensor-card">
+
+            <div class="card-top">
+
+                <div class="sensor-icon">
+                    🌡️
+                </div>
+
+                <span>
+                    SUHU
+                </span>
+
+            </div>
+
+
+            <div class="value">
+
+                <strong id="temperature">
+                    --
+                </strong>
+
+                <small>
+                    °C
+                </small>
+
+            </div>
+
+
+            <div
+                id="temperatureStatus"
+                class="condition safe">
+                MENUNGGU DATA
+            </div>
+
+        </div>
+
+
+
+        <!-- KELEMBAPAN -->
+
+        <div class="sensor-card">
+
+            <div class="card-top">
+
+                <div class="sensor-icon">
+                    💧
+                </div>
+
+                <span>
+                    KELEMBAPAN
+                </span>
+
+            </div>
+
+
+            <div class="value">
+
+                <strong id="humidity">
+                    --
+                </strong>
+
+                <small>
+                    %
+                </small>
+
+            </div>
+
+
+            <div
+                id="humidityStatus"
+                class="condition safe">
+                MENUNGGU DATA
+            </div>
+
+        </div>
+
+
+
+        <!-- ASAP -->
+
+        <div class="sensor-card">
+
+            <div class="card-top">
+
+                <div class="sensor-icon">
+                    💨
+                </div>
+
+                <span>
+                    ASAP / GAS
+                </span>
+
+            </div>
+
+
+            <div class="value">
+
+                <strong id="smoke">
+                    --
+                </strong>
+
+                <small>
+                    ADC
+                </small>
+
+            </div>
+
+
+            <div
+                id="smokeStatus"
+                class="condition safe">
+                MENUNGGU DATA
+            </div>
+
+        </div>
+
+
+
+        <!-- API -->
+
+        <div class="sensor-card">
+
+            <div class="card-top">
+
+                <div class="sensor-icon">
+                    🔥
+                </div>
+
+                <span>
+                    API
+                </span>
+
+            </div>
+
+
+            <div class="value text">
+
+                <strong id="flame">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div
+                id="flameStatus"
+                class="condition safe">
+                MENUNGGU DATA
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     AKTUATOR
+================================================== -->
+
+<section class="actuator-section">
+
+
+    <div class="section-header">
+
+        <div>
+
+            <span>
+                AKTUATOR
+            </span>
+
+            <h2>
+                Sistem Pengamanan
+            </h2>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="actuator-grid">
+
+
+        <div class="actuator-card">
+
+            <div class="actuator-symbol">
+                🔴
+            </div>
+
+            <div>
+
+                <span>
+                    LED MERAH
+                </span>
+
+                <strong id="redLed">
+                    OFF
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="actuator-card">
+
+            <div class="actuator-symbol">
+                🟢
+            </div>
+
+            <div>
+
+                <span>
+                    LED HIJAU
+                </span>
+
+                <strong id="greenLed">
+                    ON
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="actuator-card">
+
+            <div class="actuator-symbol">
+                🔊
+            </div>
+
+            <div>
+
+                <span>
+                    BUZZER
+                </span>
+
+                <strong id="buzzer">
+                    OFF
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     INFORMASI SISTEM
+================================================== -->
+
+<section class="system-info">
+
+
+    <div>
+
+        <span>
+            MQTT
+        </span>
+
+        <strong id="mqttStatus">
+            DISCONNECTED
+        </strong>
+
+    </div>
+
+
+    <div>
+
+        <span>
+            ESP32
+        </span>
+
+        <strong id="espStatus">
+            OFFLINE
+        </strong>
+
+    </div>
+
+
+    <div>
+
+        <span>
+            UPDATE
+        </span>
+
+        <strong id="lastUpdate">
+            --
+        </strong>
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
+
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
